@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentsService } from '../students.service';
 import { Students } from '../students';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view',
@@ -9,7 +10,9 @@ import { Students } from '../students';
 })
 export class ViewComponent implements OnInit {
   students: any;
-  constructor(public _studentsService: StudentsService) { }
+  _id:any;
+  constructor(public _studentsService: StudentsService,
+    private router: Router) { }
 
   ngOnInit() {
     this._studentsService.getStudents()
@@ -17,7 +20,7 @@ export class ViewComponent implements OnInit {
       // console.log(JSON.stringify(data));
       
       this.students = data;
-      console.log(this.students);
+      console.log("Priyanshu");
     });
   }
   delete(students: Students): void {
@@ -26,5 +29,13 @@ export class ViewComponent implements OnInit {
    .subscribe (data=>{
     this.students = this.students.filter((u:any) => u!==students);
    }) ; 
+  }
+  edit(students: Students) {
+    this._id = students.Roll;
+    this.router.navigate(['edit/'+ this._id]);
+  }
+
+  addDetails() {
+    this.router.navigate(['add']);
   }
 }

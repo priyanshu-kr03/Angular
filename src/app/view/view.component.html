@@ -14,13 +14,18 @@
         <!-- <th scope="col">#</th> -->
         <th scope="col">Roll</th>
         <th scope="col">Name</th>
+        <th scope="col">Edit</th>
         <th scope="col">Delete</th>
+        
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let std of students ">
+        
         <td>{{std.Roll}}</td>
         <td>{{std.Name}}</td>
+        <td><button class="btn btn-success" (click)="edit(std)">Edit</button></td>
         <td><button class="btn btn-danger" (click)="delete(std)">Delete</button></td>
       </tr>
   </table>
+<button class="btn btn-success" (click)="addDetails()"> Add Details</button>

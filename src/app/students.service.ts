@@ -20,5 +20,13 @@ export class StudentsService {
     return this.http.post('http://localhost/Student/add.php', student);
    }
 
+   getByRoll(roll:number) {
+    return this.http.get<Students[]>('http://localhost/Student/getStudentByRoll.php?roll='+ roll);
+   }
+
+   updateStudent(student:Students) {
+    return this.http.put('http://localhost/Student/update.php'+ '?roll=' + student.Roll, student);
+   }
+
 }
  

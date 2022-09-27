@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class ViewComponent implements OnInit {
   students: any;
   _id:any;
+  orderHeader: String | undefined;
+  isDescOrder:boolean=true;
   constructor(public _studentsService: StudentsService,
     private router: Router) { }
 
@@ -20,7 +22,6 @@ export class ViewComponent implements OnInit {
       // console.log(JSON.stringify(data));
       
       this.students = data;
-      console.log("Priyanshu");
     });
   }
   delete(students: Students): void {
@@ -37,5 +38,10 @@ export class ViewComponent implements OnInit {
 
   addDetails() {
     this.router.navigate(['add']);
+  }
+
+  sort(headerName:String) {
+    this.isDescOrder = !this.isDescOrder;
+    this.orderHeader = headerName;
   }
 }

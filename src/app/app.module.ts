@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { EditComponent } from './edit/edit.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 export const routes: Routes = [
   {path : '', component: ViewComponent, pathMatch: 'full'},
@@ -32,6 +33,7 @@ export const routes: Routes = [
     // RouterModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
